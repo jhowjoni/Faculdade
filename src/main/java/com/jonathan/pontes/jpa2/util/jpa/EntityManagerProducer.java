@@ -12,13 +12,13 @@ import javax.persistence.Persistence;
 @ApplicationScoped
 public class EntityManagerProducer {
 	
-	@Inject
-    private PersistenceProperties properties;
+	//@Inject
+    //private PersistenceProperties properties;
 	
 	private EntityManagerFactory factory;
 
-	public EntityManagerProducer() {
-		this.factory = Persistence.createEntityManagerFactory("faculdade", properties.get());
+	public EntityManagerProducer() throws Exception{
+		this.factory = Persistence.createEntityManagerFactory("faculdade", PersistenceProperties.get());
 	}
 
 	@Produces
