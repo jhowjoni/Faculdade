@@ -35,7 +35,7 @@
 		    			<p:button outcome="CadastroEspecialidade" icon="ui-icon-pencil" title="Editar">
 		    				<f:param name="especialidade" value="#{especialidade.codigo}"/>
 		    			</p:button>
-		    			<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()"
+		    			<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="PF('confirmacaoExclusao').show()"
 								process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
 							<f:setPropertyActionListener target="#{pesquisaEspecialidadeBean.especialidadeSelecionada}" value="#{especialidade}" />
 						</p:commandButton>
@@ -45,9 +45,9 @@
 		    <p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao"
 	        		message="Tem certeza que deseja excluir a especialidade #{pesquisaEspecialidadeBean.especialidadeSelecionada.descricao}?"  
 	                header="Exclusão da especialidade" severity="alert">
-	        	<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
+	        	<p:button value="Não" onclick="PF('confirmacaoExclusao').hide(); return false;" />
 	        	<p:commandButton value="Sim" update=":frmPesquisa:especialidadeTable"
-	        			onclick="confirmacaoExclusao.hide()" action="#{pesquisaEspecialidadeBean.excluir}" />
+	        			onclick="PF('confirmacaoExclusao').hide()" action="#{pesquisaEspecialidadeBean.excluir}" />
 	    	</p:confirmDialog>
 	    </h:form>
     </ui:define>

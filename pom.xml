@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	 <groupId>com.jonathan.roberto</groupId>
-  <artifactId>faculdade</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+	<groupId>com.jonathan.roberto</groupId>
+	<artifactId>faculdade</artifactId>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -12,13 +12,15 @@
 	</properties>
 
 	<dependencies>
+		<!-- PrimeFaces (Biblioteca de componentes) -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- PrimeFaces (Temas) -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -26,6 +28,7 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Mojarra (Implementação JSF 2) -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
@@ -33,6 +36,7 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Weld (implementação do CDI) -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
@@ -40,38 +44,43 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.3.3.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- Núcleo do Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.4.Final</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- Implementação de EntityManager da JPA -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.4.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Driver JDBC do MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- Driver JDBC do Postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1201-jdbc4</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>5.2.4.Final</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
@@ -80,6 +89,16 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- OmniFaces (utilitários para JSF) -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.4.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -92,7 +111,7 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -116,11 +135,11 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
-	
+	<!-- Repositorio PrimeFaces -->
 	<repositories>
 		<repository>
 			<id>prime-repo</id>
