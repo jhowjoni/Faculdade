@@ -22,20 +22,19 @@ public class EspecialidadeDAO implements Serializable{
 		em.merge(especialidade);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Especialidade> buscarTodos() {
-		return em.createQuery("from Especialidade").getResultList();
+		return em.createQuery("from Especialidade", Especialidade.class).getResultList();
 	}
 
 	@Transactional
 	public void excluir(Especialidade especialidade) throws NegocioException {
-		especialidade = em.find(Especialidade.class, especialidade.getCodigo());
-		
 		try {
-			em.remove(especialidade);
+			Especialidade especialidadeTemp = this.buscarPeloCodigo(especialidade.getCodigo());
+		
+			em.remove(especialidadeTemp);
 			em.flush();
 		} catch (PersistenceException e) {
-			throw new NegocioException("Especialidade não pode ser excluída.");
+			throw new NegocioException("Especialidade não pode ser excluído.");
 		}
 	}
 

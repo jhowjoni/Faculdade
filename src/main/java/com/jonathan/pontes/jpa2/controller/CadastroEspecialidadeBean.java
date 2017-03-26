@@ -2,8 +2,7 @@ package com.jonathan.pontes.jpa2.controller;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,31 +20,28 @@ public class CadastroEspecialidadeBean implements Serializable {
 	@Inject
 	private EspecialidadeService especialidadeService;
 	
+	private Especialidade especialidade;
+	
 	@Inject
 	private FacesMessages facesMessages;
 	
-	private Especialidade especialidade;
+	public void init() {
+		if (this.especialidade== null) {
+			limpar();
+		}
+	}
 	
 	public void salvar() {
 		try {
-			this.especialidadeService.salvar(especialidade);
-			facesMessages.info("Especialidade salva com sucesso!");
+			especialidadeService.salvar(especialidade);
+			facesMessages.info("Especialidade salvo com sucesso!");
 			
-			this.limpar();
+			limpar();
 		} catch (NegocioException e) {
 			facesMessages.error(e.getMessage());
 		}
 	}
 	
-	@PostConstruct
-	public void init() {
-		this.limpar();
-	}
-	
-	public void limpar() {
-		this.especialidade = new Especialidade();
-	}
-
 	public Especialidade getEspecialidade() {
 		return especialidade;
 	}
@@ -54,8 +50,12 @@ public class CadastroEspecialidadeBean implements Serializable {
 		this.especialidade = especialidade;
 	}
 	
-
+	public boolean isEditando() {
+		return this.especialidade.getCodigo() != null;
+	}
+	
+	private void limpar() {
+		this.especialidade = new Especialidade();
+	}
+	
 }
-
-
-
